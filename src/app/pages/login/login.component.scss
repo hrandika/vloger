@@ -1,0 +1,23 @@
+.right {
+  height: 100%;
+  background-image: url('/assets/img/daniel-olah-f0P7y3swnZU-unsplash.jpg');
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  // filter: blur(8px);
+}
+
+.sign-in {
+  font-size: 2.5em;
+  margin-bottom: 2vh;
+}
+
+.login-form {
+  width: 25%;
+}
+
+.line {
+  @extend .login-form;
+  margin: 1vh 0 1vh 0;
+}

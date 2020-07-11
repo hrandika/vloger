@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@include mat-core();
+
+$vloger-primary: mat-palette($mat-gray);
+$vloger-accent: mat-palette($mat-pink, A200, A100, A400);
+$vloger-warn: mat-palette($mat-red);
+
+$vloger-theme: mat-light-theme($vloger-primary, $vloger-accent, $vloger-warn);
+@include angular-material-theme($vloger-theme);
+
+.dark-theme {
+  color: $light-primary-text;
+  $dark-primary: mat-palette($mat-gray, 900);
+  $dark-accent: mat-palette($mat-amber, A400, A100, A700);
+  $dark-warn: mat-palette($mat-red);
+  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  @include angular-material-theme($dark-theme);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.page {
+  padding: 0 10vw 0 10vw;
+}
+.container {
+  height: calc(100vh - 64px);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(222, 222, 222, 0.75);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  //width: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  // border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
