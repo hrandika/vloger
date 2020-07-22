@@ -1,23 +1,33 @@
-<div [ngClass]="{'dark-theme': darkMode$|async}">
+<div [ngClass]="{'dark-theme': isDark }">
   <mat-sidenav-container>
     <mat-sidenav>Start</mat-sidenav>
     <mat-sidenav-content>
-      <mat-toolbar style="position: fixed;top: 0;z-index: 1;" class="mat-elevation-z6" fxLayoutAlign="start center">
-        <span fxFlex="10"></span>
-        <a [routerLink]="['']">Blog Template</a>
+      <!-- toolbar -->
+      <mat-toolbar class="toolbar" [ngClass]="{'white mat-elevation-z6' : white,'dark mat-elevation-z6': dark }"
+        fxLayoutAlign="start center">
+        <span fxFlex="15"></span>
+        <a [routerLink]="['']">
+          <img src="assets/img/logo.png" height="50" />
+        </a>
         <span fxFlex></span>
+        <button mat-button [routerLink]="['login']">Profile</button>
+        <button mat-button [routerLink]="['login']">Twitter</button>
+        <a mat-button target="_blank" href="https://www.youtube.com/channel/UCeCg8euhEu9z_-ZbeyCo22A?view_as=subscriber">Youtube</a>
+        <span fxFlex></span>
+
         <button mat-button [routerLink]="['login']">Login</button>
-        <mat-slide-toggle [checked]="darkMode$|async" (change)="onDarkMode($event)">
+        <mat-slide-toggle [checked]="isDark" (change)="onDarkMode($event)">
           <mat-icon class="dark-mode-icon" svgIcon="app:dark-mode"></mat-icon>
         </mat-slide-toggle>
-        <span fxFlex="10"></span>
+        <span fxFlex="15"></span>
       </mat-toolbar>
-      <div class="mat-app-background top-margin">
+
+      <div class="mat-app-background">
         <router-outlet></router-outlet>
       </div>
       <footer></footer>
     </mat-sidenav-content>
-    
+
   </mat-sidenav-container>
 
 </div>
