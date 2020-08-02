@@ -10,11 +10,20 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then((m) => m.LoginModule),
   },
+  {
+    path: 'post/:id',
+    loadChildren: () => import('./pages/site/post/post.module').then((m) => m.PostModule),
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/site/profile/profile.module').then((m) => m.ProfileModule),
+  },
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
       initialNavigation: 'enabled',
     }),
   ],

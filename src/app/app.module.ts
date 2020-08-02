@@ -9,11 +9,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-import { NgxsModule } from '@ngxs/store';
+import { NgxsModule, NoopNgxsExecutionStrategy } from '@ngxs/store';
+import { MarkdownModule } from 'ngx-markdown';
 import { environment } from 'src/environments/environment';
 import { AppState } from 'src/shared/state/app/app.state';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+export function windowFactory() {
+  return window;
+}
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -24,8 +30,10 @@ import { AppComponent } from './app.component';
     // Ngxs
     NgxsModule.forRoot([AppState], {
       developmentMode: !environment.production,
+      executionStrategy: NoopNgxsExecutionStrategy,
     }),
     NgxsStoragePluginModule.forRoot(),
+    MarkdownModule.forRoot(),
     //
     FlexLayoutModule,
     MatButtonModule,
@@ -34,7 +42,7 @@ import { AppComponent } from './app.component';
     MatIconModule,
     MatSidenavModule,
   ],
-  providers: [],
+  providers: [{ provide: 'window', useFactory: windowFactory }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

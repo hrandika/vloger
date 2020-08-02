@@ -1,0 +1,17 @@
+.tint-image {
+  background: 
+    /* top, transparent red, faked with gradient */ linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),
+    /* bottom, image */ url('/assets/img/alessandro-pacilio-x-8qGCHJMGQ-unsplash.jpg');
+
+  background-size: 100%;
+  min-height: 100vh;
+}
+
+.profile {
+  border-radius: 50%;
+  width: 15%;
+  margin-bottom: 2vh;
+}

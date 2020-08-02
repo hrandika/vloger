@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { DarkMode } from './app.action';
+import { Post } from 'src/shared/api/post/post';
+import { DarkMode, SetPost } from './app.action';
 
 export class AppStateModel {
   darkMode: boolean;
+  post?: Post;
 }
 
 @Injectable()
@@ -17,8 +19,18 @@ export class AppState {
     return state.darkMode;
   }
 
+  @Selector()
+  static post(state: AppStateModel) {
+    return state.post;
+  }
+
   @Action(DarkMode)
-  private darkMode({ patchState }: StateContext<AppStateModel>, action: DarkMode) {
+  public darkMode({ patchState }: StateContext<AppStateModel>, action: DarkMode) {
     return patchState({ darkMode: action.enable });
   } //darkMode()
+
+  @Action(SetPost)
+  public setPost({ patchState }: StateContext<AppStateModel>, action: SetPost) {
+    return patchState({ post: action.post });
+  }
 } // class

@@ -29,8 +29,13 @@ body {
 .page {
   padding: 0 15vw 0 15vw;
 }
+
 .container {
   height: calc(100vh - 64px);
+}
+
+.white {
+  color: white; 
 }
 
 /* width */
