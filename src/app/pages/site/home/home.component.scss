@@ -8,6 +8,10 @@
   margin-bottom: 2vh;
 }
 
+.small-cards {
+  margin-top: 2vh;
+}
+
 .tint-image {
   background: 
   /* top, transparent red, faked with gradient */ linear-gradient(
@@ -15,8 +19,9 @@
       rgba(0, 0, 0, 0.45)
     ),
     /* bottom, image */ url('/assets/img/alessandro-pacilio-x-8qGCHJMGQ-unsplash.jpg');
-  background-size: 100%;
+  background-size: cover;
   min-height: 80vh;
+  background-repeat: no-repeat;
 }
 
 .first-post-img {
@@ -51,5 +56,24 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+/**
+  XS
+*/
+@media screen and (min-width: 0px) and (max-width: 599.99px) {
+  .mat-display-4 {
+    font-size: 40px;
+  }
+  .mat-display-2 {
+    font-size: 30px;
+  }
+  .posts {
+    padding-top: 2vh;
+  }
+
+  .small-cards {
+    margin-top: 1vh;
   }
 }

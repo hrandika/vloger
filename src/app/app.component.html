@@ -3,29 +3,35 @@
     <mat-sidenav>Start</mat-sidenav>
     <mat-sidenav-content>
       <!-- toolbar -->
-      <mat-toolbar class="toolbar" [ngClass]="{'white' : white,'dark': dark }" fxLayoutAlign="start center" >
-        <span fxFlex="15"></span>
+      <mat-toolbar class="toolbar" [ngClass]="{'white' : white,'dark': dark }" fxLayoutAlign="start center">
+        <span fxShow.gt-xs fxHide fxFlex="15"></span>
+        <button fxShow.xs fxHide mat-icon-button>
+          <mat-icon svgIcon="app:menu"></mat-icon>
+        </button>
         <a [routerLink]="['']">
-          <img src="assets/img/logo.png" height="50" />
+          <img src="assets/img/logo.png" class="logo" />
         </a>
-        <span> | Blog</span>
+        <!-- <span> | Blog</span> -->
         <span fxFlex></span>
-        <button mat-button [routerLink]="['profile']">Profile</button>
-        <a mat-button target=" _blank" href="https://twitter.com/hrandika">Github</a>
-        <a mat-button target=" _blank" href="https://twitter.com/hrandika">Twitter</a>
-        <a mat-button target=" _blank"
-          href="https://www.youtube.com/channel/UCeCg8euhEu9z_-ZbeyCo22A?view_as=subscriber">Youtube</a>
-        <!-- <button mat-button [routerLink]="['login']">Login</button> -->
+        <div fxShow.gt-xs fxHide>
+          <button mat-button [routerLink]="['profile']">Profile</button>
+          <a mat-button target=" _blank" href="https://www.facebook.com/hrandika">Facebook</a>
+          <a mat-button target=" _blank" href="https://github.com/hrandika">Github</a>
+          <a mat-button target=" _blank" href="https://twitter.com/hrandika">Twitter</a>
+          <a mat-button target=" _blank"
+            href="https://www.youtube.com/channel/UCeCg8euhEu9z_-ZbeyCo22A?view_as=subscriber">Youtube</a>
+
+        </div>
         <mat-slide-toggle [checked]="isDark" (change)="onDarkMode($event)">
           <mat-icon class="dark-mode-icon" svgIcon="app:dark"></mat-icon>
         </mat-slide-toggle>
-        <span fxFlex="15"></span>
+        <span fxShow.gt-xs fxHide fxFlex="15"></span>
       </mat-toolbar>
 
-      <div class="mat-app-background">
-        <router-outlet></router-outlet>
-      </div>
+      <router-outlet></router-outlet>
+
       <!-- <footer></footer> -->
+
     </mat-sidenav-content>
 
   </mat-sidenav-container>

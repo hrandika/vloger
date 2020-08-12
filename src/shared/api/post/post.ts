@@ -21,4 +21,6 @@ export class Post {
   public icon?: string;
   public description?: string;
   public meta?: string;
+  public github?:string;
+  public youtube?:string
 }

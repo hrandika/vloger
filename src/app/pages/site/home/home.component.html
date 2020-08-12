@@ -1,70 +1,51 @@
 <div class="tint-image">
     <div style="width: 100%;height: 80vh;" fxLayoutAlign="center center" fxLayout="column">
-        <h1 class="mat-display-4 white">Technology as a Service</h1>
+        <h1 class="mat-display-4 white">Technology as a service</h1>
         <h2 class="mat-display-2 white">
-            Sharing our knowledge ...
+            Sharing our knowledge
         </h2>
     </div>
 </div>
 <div #top2 class="posts page" fxLayout="column" fxLayoutGap="2vh">
-    <div fxLayout="row" fxLayoutGap="1vw">
-        <mat-card class="scale-in-center" *ngFor="let post of featured" fxFlex="49">
-            <img mat-card-image class="first-post-img" [src]="post.image" alt="Photo of somewhere">
-            <mat-card-header>
-                <mat-icon mat-card-avatar svgIcon="app:{{post.icon}}"></mat-icon>
-                <mat-card-title>{{post.title}}</mat-card-title>
-                <mat-card-subtitle>{{post.subTitle}}</mat-card-subtitle>
-            </mat-card-header>
-
-            <mat-card-content>
-                <p> {{post.description}} </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button (click)="onPost(post)">READ</button>
-                <span fxFlex></span>
-                <button mat-icon-button>
-                    <mat-icon svgIcon="app:facebook"></mat-icon>
-                </button>
-                <button mat-icon-button>
-                    <mat-icon svgIcon="app:youtube"></mat-icon>
-                </button>
-                <span fxFlex="5"></span>
-            </mat-card-actions>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1vw">
+        <mat-card class="scale-in-center" *ngFor="let post of featured" fxFlex.xs="100" fxFlex="49">
+            <ng-container [ngTemplateOutlet]="cardContent" [ngTemplateOutletContext]="{post:post}">
+            </ng-container>
         </mat-card>
     </div>
     <div #old fxLayout="row wrap" fxLayoutAlign="space-between center">
-        <span *ngFor="let post of all | paginate: { itemsPerPage: 6, currentPage: p }"
-            fxFlex="32" class="slide-in-top">
-            <mat-card style="margin-top: 2vh;">
-                <img mat-card-image class="first-post-img" [src]="post.image" alt="Photo of somewhere">
-            <mat-card-header>
-                <mat-icon mat-card-avatar svgIcon="app:{{post.icon}}"></mat-icon>
-                <mat-card-title>{{post.title}}</mat-card-title>
-                <mat-card-subtitle>{{post.subTitle}}</mat-card-subtitle>
-            </mat-card-header>
-
-            <mat-card-content>
-                <p> {{post.description}} </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button (click)="onPost(post)">READ</button>
-                <span fxFlex></span>
-                <button mat-icon-button>
-                    <mat-icon svgIcon="app:facebook"></mat-icon>
-                </button>
-                <button mat-icon-button>
-                    <mat-icon svgIcon="app:youtube"></mat-icon>
-                </button>
-                <span fxFlex="5"></span>
-            </mat-card-actions>
+        <span *ngFor="let post of all | paginate: { itemsPerPage: 6, currentPage: p }" fxFlex.xs="100" fxFlex="32" fxLayout.xs="column"
+            class="slide-in-top">
+            <mat-card class="small-cards">
+                <ng-container [ngTemplateOutlet]="cardContent" [ngTemplateOutletContext]="{post:post}">
+                </ng-container>
             </mat-card>
         </span>
     </div>
     <div fxLayoutAlign="center center">
         <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
-
     </div>
-    
 </div>
+
+<ng-template #cardContent let-post='post'>
+    <img mat-card-image class="first-post-img" [src]="post.image" alt="Photo of somewhere">
+    <mat-card-header>
+        <mat-icon mat-card-avatar svgIcon="app:{{post.icon}}"></mat-icon>
+        <mat-card-title>{{post.title}}</mat-card-title>
+        <mat-card-subtitle>{{post.subTitle}}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p> {{post.description}} </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="onPost(post)">Continue reading</button>
+        <span fxFlex></span>
+        <a *ngIf="post.github" mat-icon-button target="_blank" [href]="post.github" matTooltip="Source code in Githuub">
+            <mat-icon svgIcon="app:github"></mat-icon>
+        </a>
+        <button *ngIf="post.youtube" mat-icon-button matTooltip="Youtube video">
+            <mat-icon svgIcon="app:youtube"></mat-icon>
+        </button>
+    </mat-card-actions>
+</ng-template>

@@ -1,12 +1,41 @@
-.tint-image {
-  background-size: 100%;
-  min-height: 100vh;
-}
 .post {
   margin: 4vh 0 4vh 0;
+}
+
+.white {
+  color: white;
 }
 
 .center {
   width: 50%;
   text-align: center;
+}
+
+.mat-icon-button.large {
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+
+  .mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+  }
+}
+
+/**
+  XS
+*/
+@media screen and (min-width: 0px) and (max-width: 599.99px) {
+  .mat-display-3 {
+    font-size: 40px;
+  }
+  .mat-display-1 {
+    font-size: 20px;
+  }
+
+  .center {
+    width: 90%;
+  }
 }
