@@ -5,11 +5,16 @@ export enum Frameworks {
   Android = 'Android',
 }
 
+export enum Lecture {
+  Parallel_Computing = 'Parallel Computing',
+}
+
 export enum Icon {
   android = 'android',
   flutter = 'flutter',
   spring = 'spring',
   angular = 'angular',
+  note = 'note',
 }
 
 export class Post {
@@ -21,6 +26,6 @@ export class Post {
   public icon?: string;
   public description?: string;
   public meta?: string;
-  public github?:string;
-  public youtube?:string
+  public github?: string;
+  public youtube?: string;
 }

@@ -3,8 +3,9 @@
     <mat-sidenav>Start</mat-sidenav>
     <mat-sidenav-content>
       <!-- toolbar -->
-      <mat-toolbar class="toolbar" [ngClass]="{'white' : white,'dark': dark }" fxLayoutAlign="start center">
+      <mat-toolbar class="toolbar" [ngClass]="[toolbarClass]" fxLayoutAlign="start center">
         <span fxShow.gt-xs fxHide fxFlex="15"></span>
+       
         <button fxShow.xs fxHide mat-icon-button>
           <mat-icon svgIcon="app:menu"></mat-icon>
         </button>

@@ -1,3 +1,4 @@
+post/introduction-to-parallel-computing
 post/embedded-keycloak
 post/androidx-security
 post/spring-data-jdbc

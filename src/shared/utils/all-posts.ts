@@ -1,4 +1,4 @@
-import { Frameworks, Icon, Post } from '../api/post/post';
+import { Frameworks, Icon, Post, Lecture } from '../api/post/post';
 
 const imageBase = 'assets/img/';
 const postBase = 'assets/posts/';
@@ -11,6 +11,16 @@ export function getPostByUrl(url: string): Post {
 
 export function getAllPosts() {
   postsMap
+    .set('introduction-to-parallel-computing', {
+      title: 'Introduction To Parallel Computing',
+      description:
+        'Computers have capabilities of executing instructions simultaneously.What are the basic behind it?',
+      subTitle: Lecture.Parallel_Computing,
+      image: `${imageBase}/nathan-gonthier-BboZKgHg0Yw-unsplash.jpg`,
+      url: 'introduction-to-parallel-computing',
+      markdown: 'assets/posts/parallel-computing/introduction-to-parallel-computing.md',
+      icon: Icon.note,
+    })
     .set('embedded-keycloak', {
       title: 'Embedded Keycloak',
       subTitle: Frameworks.SpringBoot,

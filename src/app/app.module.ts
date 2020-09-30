@@ -8,6 +8,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsModule, NoopNgxsExecutionStrategy } from '@ngxs/store';
 import { MarkdownModule } from 'ngx-markdown';
@@ -41,6 +42,7 @@ export function windowFactory() {
     MatSlideToggleModule,
     MatIconModule,
     MatSidenavModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [{ provide: 'window', useFactory: windowFactory }],
   bootstrap: [AppComponent],
