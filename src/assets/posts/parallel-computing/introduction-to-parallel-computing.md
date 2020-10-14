@@ -290,11 +290,31 @@ Don't get fooled when you hear that a GPU has 5000 cores, it's probably just say
 - This programming model is a type of shared memory programming.
 - In the threads model of parallel programming, a single "heavy weight" process can have multiple "light weight", concurrent execution paths.
 
-Let take a look at Java example
+Let take a look at Java example.
 
 ```bash
 mvn archetype:generate -DgroupId=com.hrandika.java -DartifactId=parallel-computing -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ```
+
+```java
+package com.hrandika.java;
+
+public class App {
+    public static void main(String[] args) {
+
+        for (int i = 0; i < 10; i++) {
+            new Thread(new Runnable() {
+                public void run() {
+                    System.out.println("Current Thread id: " + Thread.currentThread().getId());
+                }
+            }).start();
+        }
+
+    }
+}
+```
+
+---
 
 #### References
 
